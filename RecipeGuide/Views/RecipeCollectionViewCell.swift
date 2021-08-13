@@ -12,11 +12,10 @@ class RecipeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var categoryName: UILabel!
     
-  
-    
+
     func setupCell(categories:Category){
         categoryName.text = categories.strCategory
-        categories
+        recipeImage.downloadImage(from: categories.strCategoryThumb)
     }
     
 }

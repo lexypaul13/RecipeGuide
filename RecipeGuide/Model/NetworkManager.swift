@@ -74,9 +74,11 @@ class NetworkManager{
     
     
     
-    private func urlBuilder(endPoint: EndPoints, category: String, mealID: Int? = nil) -> URL? {
+    private func urlBuilder(endPoint: EndPoints, category: String?, mealID: Int? = nil) -> URL? {
         //let filter = "filter.php?c=\(category)"
+        
        let lookUp = "lookup.php?i=\(mealID ?? 0)"
+        //https://www.themealdb.com/api/json/v1/1/filter.php?c=Lamb
         //https://www.themealdb.com/api/json/v1/1/filter.php?c=Lamb
 
         switch endPoint {
@@ -84,7 +86,7 @@ class NetworkManager{
             return URL(string: baseURL + "categories.php")
         
         case .showMealCategory:
-            return URL(string: baseURL + "filter.php?c=\(category)")
+            return URL(string: baseURL + "filter.php?c=\(category ?? "")")
             
         case .showMealDetails:
             return URL(string: baseURL + lookUp)
