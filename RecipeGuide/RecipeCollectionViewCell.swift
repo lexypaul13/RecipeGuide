@@ -16,6 +16,7 @@ class RecipeCollectionViewCell: UICollectionViewCell {
     
     func setupCell(categories:Category){
         categoryName.text = categories.strCategory
+        categories
     }
     
 }

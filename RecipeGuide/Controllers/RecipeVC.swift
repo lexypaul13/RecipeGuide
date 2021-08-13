@@ -31,6 +31,7 @@ class RecipeVC: UIViewController {
                 return
             }
             DispatchQueue.main.async {
+                self.category = category
                 self.collectionView.reloadData()
             }
         }

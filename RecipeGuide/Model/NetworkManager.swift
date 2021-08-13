@@ -5,21 +5,19 @@
 //  Created by Alex Paul on 8/12/21.
 //
 
-import Foundation
+import UIKit
 //https://www.themealdb.com/api/json/v1/1/categories.php
 //https://www.themealdb.com/api/json/v1/1/filter.php?c=Lamb
 //https://www.themealdb.com/api/json/v1/1/lookup.php?i=52819
+enum EndPoints {
+    case categories
+    case showMealCategory
+    case showMealDetails
+}
+
 class NetworkManager{
-    
-    enum EndPoints {
-        case categories
-        case showMealCategory
-        case showMealDetails
-    }
-    
     static let shared = NetworkManager()
     private let baseURL : String
-    //let cache = NSCache<String,UImage>()
     
     private init(){
         self.baseURL = "https://www.themealdb.com/api/json/v1/1/"
@@ -66,6 +64,14 @@ class NetworkManager{
         }
         task.resume()
     }
+    
+    
+    
+
+    
+    
+    
+    
     
     
     private func urlBuilder(endPoint: EndPoints, category: String, mealID: Int? = nil) -> URL? {

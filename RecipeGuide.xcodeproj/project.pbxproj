@@ -19,6 +19,7 @@
 		5713F62826C5FF190064E201 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713F62726C5FF190064E201 /* ErrorMessage.swift */; };
 		5713F62A26C5FF3A0064E201 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713F62926C5FF3A0064E201 /* NetworkManager.swift */; };
 		5713F62E26C60BEE0064E201 /* RecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713F62D26C60BEE0064E201 /* RecipeCollectionViewCell.swift */; };
+		5713F63026C617860064E201 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713F62F26C617860064E201 /* UIImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		5713F62726C5FF190064E201 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		5713F62926C5FF3A0064E201 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5713F62D26C60BEE0064E201 /* RecipeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCollectionViewCell.swift; sourceTree = "<group>"; };
+		5713F62F26C617860064E201 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 			children = (
 				5713F62926C5FF3A0064E201 /* NetworkManager.swift */,
 				5713F62526C5FF040064E201 /* Category.swift */,
+				5713F62F26C617860064E201 /* UIImageView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5713F63026C617860064E201 /* UIImageView.swift in Sources */,
 				5713F62A26C5FF3A0064E201 /* NetworkManager.swift in Sources */,
 				5713F5FA26C5FECD0064E201 /* RecipeVC.swift in Sources */,
 				5713F5F626C5FECD0064E201 /* AppDelegate.swift in Sources */,
