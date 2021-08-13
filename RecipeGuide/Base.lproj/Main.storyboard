@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--RecipeVC-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="RecipeVC" customModule="RecipeGuide" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aWF-Up-iwA">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kQ7-Aw-igd">
+                                    <size key="itemSize" width="200" height="263"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="foodCell" id="61h-Kt-nmw" customClass="RecipeCollectionViewCell" customModule="RecipeGuide" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="263"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="oUn-dU-Ope">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="263"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6YS-GE-jJ4">
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="226.5"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTP-4e-ZgB">
+                                                    <rect key="frame" x="8" y="234.5" width="184" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="6YS-GE-jJ4" secondAttribute="trailing" id="7PD-nY-lAI"/>
+                                                <constraint firstAttribute="trailing" secondItem="aTP-4e-ZgB" secondAttribute="trailing" constant="8" id="IhH-qq-dVT"/>
+                                                <constraint firstItem="6YS-GE-jJ4" firstAttribute="leading" secondItem="oUn-dU-Ope" secondAttribute="leading" id="MHP-Zr-8jo"/>
+                                                <constraint firstItem="aTP-4e-ZgB" firstAttribute="top" secondItem="6YS-GE-jJ4" secondAttribute="bottom" constant="8" id="U6J-N9-cVc"/>
+                                                <constraint firstAttribute="bottom" secondItem="aTP-4e-ZgB" secondAttribute="bottom" constant="8" id="X8V-2m-WDD"/>
+                                                <constraint firstItem="aTP-4e-ZgB" firstAttribute="leading" secondItem="oUn-dU-Ope" secondAttribute="leading" constant="8" id="fVJ-LN-xbW"/>
+                                                <constraint firstItem="6YS-GE-jJ4" firstAttribute="top" secondItem="oUn-dU-Ope" secondAttribute="top" id="pkY-CD-2sM"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="200" height="263"/>
+                                        <connections>
+                                            <outlet property="categoryName" destination="aTP-4e-ZgB" id="bEY-S9-nPX"/>
+                                            <outlet property="recipeImage" destination="6YS-GE-jJ4" id="89S-qI-QZy"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aWF-Up-iwA" secondAttribute="trailing" id="2DD-TU-jQF"/>
+                            <constraint firstItem="aWF-Up-iwA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6F3-PU-dkF"/>
+                            <constraint firstItem="aWF-Up-iwA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7xs-R6-fpJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="aWF-Up-iwA" secondAttribute="bottom" id="cjh-96-tjO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="aWF-Up-iwA" id="s7R-F0-xNN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="55.580357142857139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
