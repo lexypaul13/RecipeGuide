@@ -9,7 +9,9 @@ import UIKit
 
 class FoodDetailsHeaderView: UIView {
 
-    @IBOutlet var foodImage: UIImage!
+    @IBOutlet var foodImage: UIImageView!
     @IBOutlet var foodName : UILabel!
+    
+    
   
 }

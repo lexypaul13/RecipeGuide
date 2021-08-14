@@ -51,10 +51,15 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource{
         
         return cell
     }
-    
-    
-    
-    
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "mealDetails" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let destinationController = segue.destination as! MealDetailsVC
+                destinationController.mealID = meals[indexPath.row].idMeal
+                
+            }
+            
+        }
+        
+    }
 }
-

@@ -32,7 +32,7 @@ class NetworkManager{
     
     
     
-    func getFood<T:Decodable>(_ endPoints: EndPoints, category:String?=nil, mealID:Int?=nil, completed:@escaping(T?)->Void){
+    func getFood<T:Decodable>(_ endPoints: EndPoints, category:String?=nil, mealID:String?=nil, completed:@escaping(T?)->Void){
         
         guard let url =  urlBuilder(endPoint: endPoints, category: category!, mealID: mealID) else {
             print(ErrorMessage.invaldURL)
@@ -66,15 +66,7 @@ class NetworkManager{
     }
     
     
-    
-
-    
-    
-    
-    
-    
-    
-    private func urlBuilder(endPoint: EndPoints, category: String?, mealID: Int? = nil) -> URL? {
+    private func urlBuilder(endPoint: EndPoints, category: String?, mealID: String? = nil) -> URL? {
         //let filter = "filter.php?c=\(category)"
         
         //https://www.themealdb.com/api/json/v1/1/filter.php?c=Lamb
@@ -88,7 +80,7 @@ class NetworkManager{
             return URL(string: baseURL + "filter.php?c=\(category ?? "")")
             
         case .showMealDetails:
-            return URL(string: baseURL + "lookup.php?i=\(mealID ?? 0)")
+            return URL(string: baseURL + "lookup.php?i=\(mealID ?? "")")
         }
     }
     
