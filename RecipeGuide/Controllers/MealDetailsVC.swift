@@ -31,7 +31,7 @@ class MealDetailsVC: UIViewController {
     func getMealDetails(){
         NetworkManager.shared.getFoodDetail(.showMealDetails,category: "",mealID: mealID) { [self] mealsResponse in
             guard let foodDetails  =  mealsResponse?.meals else{
-                print("Something when wrong")
+                self.alert(message: ErrorMessage.unableToComplete.rawValue, title: "No internet Connection")
                 return
             }
             DispatchQueue.main.async {

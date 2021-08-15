@@ -30,23 +30,23 @@ class NetworkManager{
     
     func getFood<T:Decodable>(_ endPoints: EndPoints, category:String?=nil, mealID:String?=nil, completed:@escaping(T?)->Void){
         guard let url =  urlBuilder(endPoint: endPoints, category: category!, mealID: mealID) else {
-            print(ErrorMessage.invaldURL)
+            print("Invalid URL")
             return
         }
         
         let task = URLSession.shared.dataTask(with: url){ data, response, error in
             if let _ = error {
-                print(ErrorMessage.unableToComplete.rawValue)
+                print(error.debugDescription)
                 return
             }
             
             guard let response = response as? HTTPURLResponse, response.statusCode==200 else {
-                print(error)
+                print(error.debugDescription)
                 return
             }
             
             guard let data = data else{
-                print(ErrorMessage.invalidData.rawValue)
+                print(error.debugDescription)
                 return
             }
             do {
@@ -66,23 +66,23 @@ class NetworkManager{
     func getFoodDetail(_ endPoints: EndPoints, category:String?=nil, mealID:String?=nil, completed:@escaping(MealsResponseDetail?)->Void){
         
         guard let url =  urlBuilder(endPoint: endPoints, category: category!, mealID: mealID) else {
-            print(ErrorMessage.invaldURL)
+            print("Invalid URL")
             return
         }
         
         let task = URLSession.shared.dataTask(with: url){ data, response, error in
             if let _ = error {
-                print(ErrorMessage.unableToComplete.rawValue)
+                print(error.debugDescription)
                 return
             }
             
             guard let response = response as? HTTPURLResponse, response.statusCode==200 else {
-                print(error)
+                print(error.debugDescription)
                 return
             }
             
             guard let data = data else{
-                print(ErrorMessage.invalidData.rawValue)
+                print(error.debugDescription)
                 return
             }
             do {
@@ -98,12 +98,6 @@ class NetworkManager{
         }
         task.resume()
     }
-    
-    
-    
-    
-    
-    
     
     private func urlBuilder(endPoint: EndPoints, category: String?, mealID: String? = nil) -> URL? {
         

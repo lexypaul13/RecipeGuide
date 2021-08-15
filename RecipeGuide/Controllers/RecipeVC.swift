@@ -26,7 +26,7 @@ class RecipeVC: UIViewController {
     func getRecipes(){
         NetworkManager.shared.getFood(.categories, category: "", mealID: nil) { (response: CategoryResponse?) in
             guard let category =  response?.categories else{
-                print("Something when wrong")
+                self.alert(message: ErrorMessage.unableToComplete.rawValue, title: "No internet Connection")
                 return
             }
             
@@ -68,3 +68,4 @@ extension RecipeVC: UICollectionViewDataSource, UICollectionViewDelegate, UIColl
     }
     
 }
+
