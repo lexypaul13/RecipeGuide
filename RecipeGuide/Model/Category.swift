@@ -7,16 +7,15 @@
 
 import Foundation
 
-// MARK: - Welcome
 struct CategoryResponse: Codable {
-    let categories: [Category]
-   
+    var categories: [Category]
+    
     enum CodingKeys: String, CodingKey{
         case categories
     }
+    
 }
 
-// MARK: - Category
 struct Category: Codable {
     let strCategory: String
     let strCategoryThumb: String

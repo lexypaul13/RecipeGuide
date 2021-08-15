@@ -8,15 +8,11 @@
 import Foundation
 
 struct Meals : Codable {
+    
     let idMeal : String?
     let strMeal : String?
-    let strDrinkAlternate : String?
-    let strCategory : String?
-    let strArea : String?
-    let strInstructions : String?
     let strMealThumb : String?
-    let strTags : String?
-    let strYoutube : String?
+    let strInstructions:String?
     let strIngredient1 : String?
     let strIngredient2 : String?
     let strIngredient3 : String?
@@ -57,22 +53,15 @@ struct Meals : Codable {
     let strMeasure18 : String?
     let strMeasure19 : String?
     let strMeasure20 : String?
-    let strSource : String?
-    let strImageSource : String?
-    let strCreativeCommonsConfirmed : String?
-    let dateModified : String?
-
+    var arrIngrediennts : [String] = []
+    var arrMeasurements : [String] = []
+    
     enum CodingKeys: String, CodingKey {
-
+        
         case idMeal = "idMeal"
         case strMeal = "strMeal"
-        case strDrinkAlternate = "strDrinkAlternate"
-        case strCategory = "strCategory"
-        case strArea = "strArea"
         case strInstructions = "strInstructions"
         case strMealThumb = "strMealThumb"
-        case strTags = "strTags"
-        case strYoutube = "strYoutube"
         case strIngredient1 = "strIngredient1"
         case strIngredient2 = "strIngredient2"
         case strIngredient3 = "strIngredient3"
@@ -113,23 +102,15 @@ struct Meals : Codable {
         case strMeasure18 = "strMeasure18"
         case strMeasure19 = "strMeasure19"
         case strMeasure20 = "strMeasure20"
-        case strSource = "strSource"
-        case strImageSource = "strImageSource"
-        case strCreativeCommonsConfirmed = "strCreativeCommonsConfirmed"
-        case dateModified = "dateModified"
+        
     }
-
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         idMeal = try values.decodeIfPresent(String.self, forKey: .idMeal)
         strMeal = try values.decodeIfPresent(String.self, forKey: .strMeal)
-        strDrinkAlternate = try values.decodeIfPresent(String.self, forKey: .strDrinkAlternate)
-        strCategory = try values.decodeIfPresent(String.self, forKey: .strCategory)
-        strArea = try values.decodeIfPresent(String.self, forKey: .strArea)
-        strInstructions = try values.decodeIfPresent(String.self, forKey: .strInstructions)
         strMealThumb = try values.decodeIfPresent(String.self, forKey: .strMealThumb)
-        strTags = try values.decodeIfPresent(String.self, forKey: .strTags)
-        strYoutube = try values.decodeIfPresent(String.self, forKey: .strYoutube)
+        strInstructions = try values.decodeIfPresent(String.self, forKey: .strInstructions)
         strIngredient1 = try values.decodeIfPresent(String.self, forKey: .strIngredient1)
         strIngredient2 = try values.decodeIfPresent(String.self, forKey: .strIngredient2)
         strIngredient3 = try values.decodeIfPresent(String.self, forKey: .strIngredient3)
@@ -170,10 +151,24 @@ struct Meals : Codable {
         strMeasure18 = try values.decodeIfPresent(String.self, forKey: .strMeasure18)
         strMeasure19 = try values.decodeIfPresent(String.self, forKey: .strMeasure19)
         strMeasure20 = try values.decodeIfPresent(String.self, forKey: .strMeasure20)
-        strSource = try values.decodeIfPresent(String.self, forKey: .strSource)
-        strImageSource = try values.decodeIfPresent(String.self, forKey: .strImageSource)
-        strCreativeCommonsConfirmed = try values.decodeIfPresent(String.self, forKey: .strCreativeCommonsConfirmed)
-        dateModified = try values.decodeIfPresent(String.self, forKey: .dateModified)
+        
+        for index in 1...20 {
+            let ingredient = try values.decodeIfPresent(String.self, forKey: Meals.CodingKeys(rawValue: "strIngredient\(index)") ?? .strIngredient1) ?? ""
+            if !(ingredient.trimmingCharacters(in: .whitespaces).isEmpty){
+                arrIngrediennts.append(ingredient)
+            }
+            
+            
+            let measure = try values.decodeIfPresent(String.self, forKey: Meals.CodingKeys(rawValue: "strMeasure\(index)") ?? .strMeasure1) ?? ""
+            if !(measure.trimmingCharacters(in: .whitespaces).isEmpty){
+                arrMeasurements.append(measure)
+            }
+            
+            
+        }
+        
     }
-
+    
+    
+    
 }

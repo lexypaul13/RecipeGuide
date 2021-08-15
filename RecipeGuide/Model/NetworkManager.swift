@@ -6,9 +6,7 @@
 //
 
 import UIKit
-//https://www.themealdb.com/api/json/v1/1/categories.php
-//https://www.themealdb.com/api/json/v1/1/filter.php?c=Lamb
-//https://www.themealdb.com/api/json/v1/1/lookup.php?i=52819
+
 enum EndPoints {
     case categories
     case showMealCategory
@@ -23,7 +21,6 @@ class NetworkManager{
         self.baseURL = "https://www.themealdb.com/api/json/v1/1/"
     }
     
-    
     private var jsonDecoder : JSONDecoder = {
         let decoder =  JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -31,9 +28,7 @@ class NetworkManager{
     }()
     
     
-    
     func getFood<T:Decodable>(_ endPoints: EndPoints, category:String?=nil, mealID:String?=nil, completed:@escaping(T?)->Void){
-        
         guard let url =  urlBuilder(endPoint: endPoints, category: category!, mealID: mealID) else {
             print(ErrorMessage.invaldURL)
             return
@@ -56,7 +51,7 @@ class NetworkManager{
             }
             do {
                 let apiResponse = try self.jsonDecoder.decode(T.self, from: data)
-                 completed(apiResponse)
+                completed(apiResponse)
                 
             } catch{
                 print(error)
@@ -66,16 +61,56 @@ class NetworkManager{
     }
     
     
-    private func urlBuilder(endPoint: EndPoints, category: String?, mealID: String? = nil) -> URL? {
-        //let filter = "filter.php?c=\(category)"
+    
+    
+    func getFoodDetail(_ endPoints: EndPoints, category:String?=nil, mealID:String?=nil, completed:@escaping(MealsResponseDetail?)->Void){
         
-        //https://www.themealdb.com/api/json/v1/1/filter.php?c=Lamb
-        //https://www.themealdb.com/api/json/v1/1/filter.php?c=Lamb
-       //https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772
+        guard let url =  urlBuilder(endPoint: endPoints, category: category!, mealID: mealID) else {
+            print(ErrorMessage.invaldURL)
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url){ data, response, error in
+            if let _ = error {
+                print(ErrorMessage.unableToComplete.rawValue)
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode==200 else {
+                print(error)
+                return
+            }
+            
+            guard let data = data else{
+                print(ErrorMessage.invalidData.rawValue)
+                return
+            }
+            do {
+                if endPoints == .showMealDetails{
+                    
+                    let apiResponse = try JSONDecoder().decode(MealsResponseDetail.self, from: data)
+                    
+                    completed(apiResponse)
+                }
+            } catch{
+                print(error)
+            }
+        }
+        task.resume()
+    }
+    
+    
+    
+    
+    
+    
+    
+    private func urlBuilder(endPoint: EndPoints, category: String?, mealID: String? = nil) -> URL? {
+        
         switch endPoint {
         case .categories:
             return URL(string: baseURL + "categories.php")
-        
+            
         case .showMealCategory:
             return URL(string: baseURL + "filter.php?c=\(category ?? "")")
             

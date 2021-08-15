@@ -40,6 +40,7 @@ class MealsVC: UIViewController {
     
     
 }
+
 extension MealsVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return meals.count
@@ -47,10 +48,12 @@ extension MealsVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "mealCell", for: indexPath) as! MealTableViewCell
-        cell.setupTableView(meal: meals[indexPath.row])
-        
+        cell.setupTableView(meal: meals.sorted(by: { meal_1, meal_2 in
+            meal_1.strMeal < meal_2.strMeal
+        })[indexPath.row])
         return cell
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "mealDetails" {
             if let indexPath = tableView.indexPathForSelectedRow {

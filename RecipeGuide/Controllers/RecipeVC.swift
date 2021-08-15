@@ -13,6 +13,7 @@ class RecipeVC: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -20,9 +21,6 @@ class RecipeVC: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource =  self
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
-        
-        
-        
     }
     
     func getRecipes(){
@@ -31,6 +29,8 @@ class RecipeVC: UIViewController {
                 print("Something when wrong")
                 return
             }
+            
+            
             DispatchQueue.main.async {
                 self.category = category
                 self.collectionView.reloadData()
@@ -45,17 +45,21 @@ class RecipeVC: UIViewController {
 extension RecipeVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        category.count
+        return category.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "foodCell", for: indexPath) as! RecipeCollectionViewCell
-        cell.setupCell(categories: category[indexPath.row])
+        cell.setupCell(categories: category.sorted(by: { category_1, category_2 in
+            category_1.strCategory < category_2.strCategory
+        })[indexPath.row])
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 200, height: 300)
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(identifier: "MealsVC") as? MealsVC
         vc?.meal = category[indexPath.row].strCategory
