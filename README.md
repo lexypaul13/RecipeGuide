@@ -4,7 +4,6 @@ RecipeGuide is a mobile application written in swift. It collects a list of food
 
 Frameworks:
 * Cod-able
-* User defaults 
 * Result types
 * NScache
 
