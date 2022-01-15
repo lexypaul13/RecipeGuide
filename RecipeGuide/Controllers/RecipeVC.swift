@@ -22,7 +22,7 @@ class RecipeVC: UIViewController {
         collectionView.dataSource =  self
         
         let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5 )
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 5, bottom: 0, right: 5 )
         layout.minimumLineSpacing = 5
         layout.itemSize = CGSize(width:(self.collectionView.frame.size.width-20)/2, height: self.collectionView.frame.size.height/3)
     }
@@ -66,6 +66,7 @@ extension RecipeVC: UICollectionViewDataSource, UICollectionViewDelegate, UIColl
         self.navigationController?.pushViewController(vc!, animated: true)
         
     }
+    
     
 }
 
