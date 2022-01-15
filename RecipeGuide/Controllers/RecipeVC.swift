@@ -20,7 +20,11 @@ class RecipeVC: UIViewController {
         getRecipes()
         collectionView.delegate = self
         collectionView.dataSource =  self
-        collectionView.collectionViewLayout = UICollectionViewFlowLayout()
+        
+        let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5 )
+        layout.minimumLineSpacing = 5
+        layout.itemSize = CGSize(width:(self.collectionView.frame.size.width-20)/2, height: self.collectionView.frame.size.height/3)
     }
     
     func getRecipes(){
@@ -29,8 +33,6 @@ class RecipeVC: UIViewController {
                 self.alert(message: ErrorMessage.unableToComplete.rawValue, title: "No internet Connection")
                 return
             }
-            
-            
             DispatchQueue.main.async {
                 self.category = category
                 self.collectionView.reloadData()
@@ -56,9 +58,7 @@ extension RecipeVC: UICollectionViewDataSource, UICollectionViewDelegate, UIColl
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 200, height: 300)
-    }
+
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(identifier: "MealsVC") as? MealsVC

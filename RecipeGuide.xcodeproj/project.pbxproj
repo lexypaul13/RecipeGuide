@@ -167,10 +167,10 @@
 		5713F62C26C60A200064E201 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				571B899026C8B12C00520A1C /* AlertVC.swift */,
 				5713F5F926C5FECD0064E201 /* RecipeVC.swift */,
 				5713F63326C61E050064E201 /* MealsVC.swift */,
 				57C140CF26C6D2B9006D7242 /* MealDetailsVC.swift */,
+				571B899026C8B12C00520A1C /* AlertVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

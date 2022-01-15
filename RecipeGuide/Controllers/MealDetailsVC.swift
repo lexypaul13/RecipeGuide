@@ -25,6 +25,7 @@ class MealDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getMealDetails()
+        self.view.backgroundColor = .white
     }
     
     
@@ -82,8 +83,5 @@ extension MealDetailsVC: UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-        40
-        
-    }
+    
 }
